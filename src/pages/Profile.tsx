@@ -1,26 +1,30 @@
+// src/pages/Profile.tsx
 import React from 'react';
 import { useFavorites } from '../contexts/FavoritesContext';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, ListGroup, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
-  const { favorites } = useFavorites();
+  const { favorites, removeFavorite } = useFavorites();
 
   return (
     <Container>
-      <h2>Profile</h2>
-      <h3>Favorites</h3>
-      <Row>
-        {favorites.map((item) => (
-          <Col key={item.id} md="4">
-            <Card style={{ marginBottom: '20px' }}>
-              <Card.Body>
-                <Card.Title>{item.name}</Card.Title>
-                <Card.Text>{item.description}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
+      <h2>Your Favorites</h2>
+      <ListGroup>
+        {favorites.map((pokemon) => (
+          <ListGroup.Item key={pokemon.id}>
+            <Link to={`/pokemon/${pokemon.id}`}>{pokemon.name}</Link>
+            <Button
+              variant="danger"
+              size="sm"
+              className="float-right"
+              onClick={() => removeFavorite(pokemon.id)}
+            >
+              Remove
+            </Button>
+          </ListGroup.Item>
         ))}
-      </Row>
+      </ListGroup>
     </Container>
   );
 };

@@ -1,38 +1,43 @@
+// src/pages/ItemDetail.tsx
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import { Container, Card, Button } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import { useFavorites } from '../contexts/FavoritesContext';
 
 const ItemDetail = () => {
   const { id } = useParams();
-  const [item, setItem] = useState<any>(null);
-  const { addFavorite } = useFavorites();
+  const [pokemon, setPokemon] = useState<any>(null);
+  const { favorites, addFavorite, removeFavorite } = useFavorites();
+  
+  const isFavorite = favorites.some(fav => fav.id === parseInt(id!));
 
   useEffect(() => {
-    const fetchItem = async () => {
-      try {
-        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-        setItem(response.data);
-      } catch (error) {
-        console.error('Error fetching item', error);
-      }
+    const fetchPokemon = async () => {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      const data = await response.json();
+      setPokemon(data);
     };
 
-    fetchItem();
+    fetchPokemon();
   }, [id]);
 
-  if (!item) return <p>Loading...</p>;
+  if (!pokemon) return <div>Loading...</div>;
 
   return (
     <Container>
-      <Card>
-        <Card.Body>
-          <Card.Title>{item.name}</Card.Title>
-          <Card.Text>{item.description}</Card.Text>
-          <Button onClick={() => addFavorite(item)}>Add to Favorites</Button>
-        </Card.Body>
-      </Card>
+      <h2>{pokemon.name}</h2>
+      <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+      <p>Height: {pokemon.height}</p>
+      <p>Weight: {pokemon.weight}</p>
+      {isFavorite ? (
+        <Button variant="danger" onClick={() => removeFavorite(pokemon.id)}>
+          Remove from Favorites
+        </Button>
+      ) : (
+        <Button variant="primary" onClick={() => addFavorite({ id: pokemon.id, name: pokemon.name })}>
+          Add to Favorites
+        </Button>
+      )}
     </Container>
   );
 };
