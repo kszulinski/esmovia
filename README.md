@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# Pokémon Favorites SPA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a Single Page Application (SPA) built with React, Vite, and TypeScript. It features user authentication using a dummy JSON API, fetching Pokémon data from the PokeAPI, and managing a list of favorite Pokémon. The app is responsive and uses React Bootstrap for styling.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User authentication with login and registration.
+- Fetch and display a list of Pokémon from the PokeAPI.
+- Add or remove Pokémon from a list of favorites.
+- View details of individual Pokémon.
+- Responsive design using React Bootstrap.
+- Admin page to set the number of Pokémon displayed per page.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+Ensure you have the following installed on your local machine:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- Node.js (>= 12.x)
+- npm (>= 6.x) or yarn
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Installation
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/yourusername/pokemon-favorites-spa.git
+cd pokemon-favorites-spa
