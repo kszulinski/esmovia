@@ -25,5 +25,5 @@ Ensure you have the following installed (or it will not work lol):
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/yourusername/pokemon-favorites-spa.git
-cd pokemon-favorites-spa
+git clone https://github.com/kszulinski/esmovia.git
+cd esmovia
