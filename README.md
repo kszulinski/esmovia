@@ -1,6 +1,6 @@
-# Pokémon Favorites SPA
+# Pokébase
 
-This is a Single Page Application (SPA) built with React, Vite, and TypeScript. It features user authentication using a dummy JSON API, fetching Pokémon data from the PokeAPI, and managing a list of favorite Pokémon. The app is responsive and uses React Bootstrap for styling.
+Application built with React, Vite, and TypeScript. It features user authentication using a dummyJSON API, fetching Pokémon data from the PokeAPI, and managing a list of favorite Pokémon. Somehow, it works
 
 ## Features
 
@@ -9,18 +9,18 @@ This is a Single Page Application (SPA) built with React, Vite, and TypeScript. 
 - Add or remove Pokémon from a list of favorites.
 - View details of individual Pokémon.
 - Responsive design using React Bootstrap.
-- Admin page to set the number of Pokémon displayed per page.
+- Admin page to set the number of Pokémon displayed per page (but everyone can acces it bc I'm to lazy to change it).
 
 ## Getting Started
 
 ### Prerequisites
 
-Ensure you have the following installed on your local machine:
+Ensure you have the following installed (or it will not work lol):
 
 - Node.js (>= 12.x)
 - npm (>= 6.x) or yarn
 
-### Installation
+### Installation Guide (very hard)
 
 1. Clone the repository:
 
