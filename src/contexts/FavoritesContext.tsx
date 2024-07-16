@@ -9,6 +9,8 @@ interface FavoritesContextType {
   favorites: Favorite[];
   addFavorite: (pokemon: Favorite) => void;
   removeFavorite: (pokemonId: number) => void;
+  elementsPerPage: number; // New state for elements per page
+  setElementsPerPage: (count: number) => void;
 }
 
 const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
@@ -17,6 +19,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
   const [favorites, setFavorites] = useState<Favorite[]>([]);
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
   const [pokemonToRemove, setPokemonToRemove] = useState<number | null>(null);
+  const [elementsPerPage, setElementsPerPage] = useState<number>(20); // Default to 20 elements per page
 
   const addFavorite = (pokemon: Favorite) => {
     setFavorites((prevFavorites) => [...prevFavorites, pokemon]);
@@ -41,7 +44,9 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <FavoritesContext.Provider value={{ favorites, addFavorite, removeFavorite: confirmRemoveFavorite }}>
+    <FavoritesContext.Provider
+      value={{ favorites, addFavorite, removeFavorite: confirmRemoveFavorite, elementsPerPage, setElementsPerPage }}
+    >
       {children}
       <Modal show={showConfirmation} onHide={cancelRemoveFavorite} centered>
         <Modal.Header closeButton>

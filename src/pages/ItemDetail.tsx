@@ -1,4 +1,4 @@
-// src/pages/ItemDetail.tsx
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Button } from 'react-bootstrap';

@@ -1,37 +1,35 @@
 import React, { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Alert } from 'react-bootstrap';
 
-const Register = () => {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
     const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
-    const userExists = existingUsers.some((user: any) => user.username === username);
+    const user = existingUsers.find((user: any) => user.username === username && user.password === password);
 
-    if (userExists) {
-      setError('User already exists. Please choose a different username.');
+    if (!user) {
+      setError('Invalid username or password.');
       return;
     }
 
-    const newUser = { username, password };
-    localStorage.setItem('users', JSON.stringify([...existingUsers, newUser]));
-
- 
-    localStorage.setItem('token', JSON.stringify({ username }));
+    login(JSON.stringify({ username }));
     navigate('/');
   };
 
   return (
     <Container>
-      <h2>Register</h2>
-      <Form onSubmit={handleRegister}>
+      <h2>Login</h2>
+      <Form onSubmit={handleLogin}>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form.Group controlId="formBasicUsername">
           <Form.Label>Username</Form.Label>
@@ -54,11 +52,12 @@ const Register = () => {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Register
+          Login
         </Button>
       </Form>
     </Container>
   );
 };
 
-export default Register;
+export default Login;
+

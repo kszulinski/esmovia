@@ -1,30 +1,36 @@
-// src/pages/Profile.tsx
-import React from 'react';
-import { useFavorites } from '../contexts/FavoritesContext';
-import { Container, ListGroup, Button } from 'react-bootstrap';
+
+import { Container, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useFavorites } from '../contexts/FavoritesContext';
+import { capitalize } from '../utils/capitalize';
 
 const Profile = () => {
   const { favorites, removeFavorite } = useFavorites();
 
+  const handleRemoveFavorite = (pokemonId: number) => {
+    if (window.confirm('Are you sure you want to remove this Pokémon from your favorites?')) {
+      removeFavorite(pokemonId);
+    }
+  };
+
   return (
     <Container>
-      <h2>Your Favorites</h2>
-      <ListGroup>
+      <h2>My Favorites</h2>
+      <div className="favorites-list">
         {favorites.map((pokemon) => (
-          <ListGroup.Item key={pokemon.id}>
-            <Link to={`/pokemon/${pokemon.id}`}>{pokemon.name}</Link>
-            <Button
-              variant="danger"
-              size="sm"
-              className="float-right"
-              onClick={() => removeFavorite(pokemon.id)}
-            >
-              Remove
-            </Button>
-          </ListGroup.Item>
+          <Card key={pokemon.id} className="favorite-card">
+            <Card.Body>
+              <Card.Title>{capitalize(pokemon.name)}</Card.Title>
+              <Link to={`/pokemon/${pokemon.id}`}>
+                <Button variant="primary">Details</Button>
+              </Link>
+              <Button variant="danger" onClick={() => handleRemoveFavorite(pokemon.id)}>
+                Remove
+              </Button>
+            </Card.Body>
+          </Card>
         ))}
-      </ListGroup>
+      </div>
     </Container>
   );
 };

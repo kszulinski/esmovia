@@ -1,5 +1,3 @@
-// src/App.tsx
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { FavoritesProvider } from './contexts/FavoritesContext';
@@ -10,7 +8,8 @@ import Profile from './pages/Profile';
 import Home from './pages/Home';
 import ItemDetail from './pages/ItemDetail';
 import PrivateRoute from './components/PrivateRoute';
-import './App.css'; // Import pliku CSS
+import './App.css'; 
+import AdminPage from './pages/Admin';
 
 const App = () => {
   return (
@@ -22,6 +21,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/admin" element={<AdminPage/>} />
             <Route
               path="/profile"
               element={

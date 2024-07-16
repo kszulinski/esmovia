@@ -1,4 +1,4 @@
-/* src/styles.css */
+
 body {
   background-color: #f0f0f0;
   font-family: Arial, sans-serif;
@@ -19,7 +19,7 @@ body {
   top: 0;
   width: 100%;
   z-index: 1000;
-  height: 60px; /* Upewnij się, że wysokość jest odpowiednia */
+  height: 60px;
 }
 
 .navbar {
@@ -39,5 +39,46 @@ body {
 }
 
 .content {
-  padding-top: 80px; /* Zwiększ ten margines, aby odpowiadał wysokości nagłówka */
+  padding-top: 80px; 
+}
+
+.favorites-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.favorite-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.favorite-card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.favorite-card .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.favorite-card .card-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.favorite-card .btn-danger {
+  margin-top: 10px;
+}
+.pokemon-list-item img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.pokemon-list-item {
+  display: flex;
+  align-items: center;
 }
