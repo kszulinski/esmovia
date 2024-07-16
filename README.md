@@ -9,7 +9,7 @@ Application built with React, Vite, and TypeScript. It features user authenticat
 - Add or remove Pokemon from a list of favorites.
 - View details of individual Pokémon.
 - Responsive design using React Bootstrap.
-- Admin page to set the number of Pokémon displayed per page (but everyone can acces it bc I'm to lazy to change it).
+- Admin page to set the number of Pokémon displayed per page (but everyone can acces it bc I'm too lazy to change it).
 
 ## Getting Started
 
