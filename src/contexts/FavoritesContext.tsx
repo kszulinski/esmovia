@@ -19,7 +19,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
   const [favorites, setFavorites] = useState<Favorite[]>([]);
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
   const [pokemonToRemove, setPokemonToRemove] = useState<number | null>(null);
-  const [elementsPerPage, setElementsPerPage] = useState<number>(20); // Default to 20 elements per page
+  const [elementsPerPage, setElementsPerPage] = useState<number>(20); 
 
   const addFavorite = (pokemon: Favorite) => {
     setFavorites((prevFavorites) => [...prevFavorites, pokemon]);
